@@ -7,7 +7,7 @@
 include_recipe 'beam-me-up::desktop'
 package 'curl'
 package 'git'
-include_recipe 'heroku::standalone'
+include_recipe 'heroku::default'
 package 'screen'
 package 'slock'
 package 'terminator'
