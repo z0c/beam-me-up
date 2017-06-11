@@ -11,5 +11,6 @@ bash "set_resolution" do
       xrandr -s $pdisplay
     fi
   EOH
+  not_if "xrandr 2>/dev/null | grep -q \"#{node.default['beam-me-up']['display']}\" | grep \*"
 end
 
