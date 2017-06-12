@@ -6,7 +6,7 @@
 
 include_recipe 'beam-me-up::desktop'
 package 'curl'
-package 'git'
+include_recipe 'beam-me-up::git'
 include_recipe 'heroku::default'
 include_recipe 'beam-me-up::rvm'
 package 'screen'
