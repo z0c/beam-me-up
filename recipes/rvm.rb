@@ -6,8 +6,8 @@
 
 node.default['rvm']['user_installs'] = [{ 
   'user'	 => 'lubuntu',
-  'default_ruby' => 'ruby-2.5.5',
-  'rubies'       => ['ruby-2.5.5'],
+  'default_ruby' => 'ruby-2.2.5',
+  'rubies'       => ['2.2.5'],
   'user_global_gems'  => [
     {'name': 'bundler'}
   ]
