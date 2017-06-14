@@ -9,6 +9,7 @@ chef_version '>= 12.1' if respond_to?(:chef_version)
 issues_url 'https://github.com/z0c/beam-me-up/issues'
 source_url 'https://github.com/z0c/beam-me-up'
 
+depends 'cloudcli'
 depends 'heroku-toolbelt'
 depends 'rvm'
 depends 'terraform'
