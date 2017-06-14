@@ -11,7 +11,6 @@ directory '/home/lubuntu/.config/terminator' do
   recursive true
   owner 'lubuntu'
   group 'lubuntu'
-
 end
 
 template '/home/lubuntu/.config/terminator/config' do
