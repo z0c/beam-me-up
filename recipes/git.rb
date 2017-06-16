@@ -6,9 +6,9 @@
 
 package 'git'
 
-template '/home/lubuntu/.gitconfig' do
+template "/home/#{node['beam-me-up']['user']}/.gitconfig" do
   source 'gitconfig.erb'
-  owner 'lubuntu'
-  group 'lubuntu'
+  owner node['beam-me-up']['user']
+  group node['beam-me-up']['user']
   mode '0664'
 end

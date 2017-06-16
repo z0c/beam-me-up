@@ -6,16 +6,16 @@
 
 package 'terminator'
 
-directory '/home/lubuntu/.config/terminator' do
+directory "/home/#{node['beam-me-up']['user']}/.config/terminator" do
   action :create
   recursive true
-  owner 'lubuntu'
-  group 'lubuntu'
+  owner node['beam-me-up']['user']
+  group node['beam-me-up']['user']
 end
 
-template '/home/lubuntu/.config/terminator/config' do
+template "/home/#{node['beam-me-up']['user']}/.config/terminator/config" do
   source 'terminator.erb'
-  owner 'lubuntu'
-  group 'lubuntu'
+  owner node['beam-me-up']['user']
+  group node['beam-me-up']['user']
   mode '0664'
 end
