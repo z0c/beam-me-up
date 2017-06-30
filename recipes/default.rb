@@ -7,6 +7,7 @@
 include_recipe 'beam-me-up::desktop'
 package 'curl'
 include_recipe 'beam-me-up::git'
+package 'qupzilla'
 package 'screen'
 package 'slock'
 include_recipe 'beam-me-up::terminator'
