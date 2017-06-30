@@ -16,3 +16,32 @@ template "/home/#{node['beam-me-up']['user']}/.config/pcmanfm/lubuntu/desktop-it
   group node['beam-me-up']['user']
   mode '0664'
 end
+
+package 'gnome-themes-standard'
+package 'gtk2-engines-murrine'
+package 'autoconf'
+package 'pkg-config'
+package 'libgtk-3-dev'
+
+directory "/home/#{node['beam-me-up']['user']}/.themes" do
+  action :create
+end
+
+execute 'make-install-arc-grey-theme' do
+  action :nothing
+  command 'make install'
+  cwd "/home/#{node['beam-me-up']['user']}/.themes/arc-grey-theme"
+end
+
+execute 'autogen-arc-grey-theme' do
+  action :nothing
+  command 'autogen.sh --prefix=/usr'
+  cwd "/home/#{node['beam-me-up']['user']}/.themes/arc-grey-theme"
+  notifies 'make-install-arc-grey-theme[:run]'
+end
+  
+execute 'git-clone-arc-grey-theme' do
+  command 'git clone https://github.com/eti0/arc-grey-theme --depth 1'
+  not_if { ::File.directory?("/home/#{node['beam-me-up']['user']}/.themes/arc-grey-theme") }
+  notifies 'autogen-arc-grey-theme[:run]'
+end
