@@ -27,6 +27,10 @@ directory "/home/#{node['beam-me-up']['user']}/.themes" do
   action :create
 end
 
+directory "/home/#{node['beam-me-up']['user']}/.themes/arc-grey-theme" do
+  action :create
+end
+
 execute 'make-install-arc-grey-theme' do
   action :nothing
   command 'make install'
@@ -37,11 +41,11 @@ execute 'autogen-arc-grey-theme' do
   action :nothing
   command 'autogen.sh --prefix=/usr'
   cwd "/home/#{node['beam-me-up']['user']}/.themes/arc-grey-theme"
-  notifies 'make-install-arc-grey-theme[:run]'
+  notifies :run, 'execute[make-install-arc-grey-theme]'
 end
   
 execute 'git-clone-arc-grey-theme' do
   command 'git clone https://github.com/eti0/arc-grey-theme --depth 1'
   not_if { ::File.directory?("/home/#{node['beam-me-up']['user']}/.themes/arc-grey-theme") }
-  notifies 'autogen-arc-grey-theme[:run]'
+  notifies :run, 'execute[autogen-arc-grey-theme]'
 end
